@@ -20,14 +20,26 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $products = $this->productsRepository->all();
-        return $products;
+        $products = $this->productsRepository->select('id','image','id_category',
+            'name','description','price')->get();
 
+
+
+        return view('products.list',compact('products'));
+
+    }
+
+    public function newProduct()
+    {
+
+        return view("products.register");
     }
 
     public function store(productRequest $request)
     {
-        $products = $this->productsRepository->create($request->all());
+        //$products = $this->productsRepository->create($request->all());
+
+        var_dump($request);
 
     }
 
@@ -55,6 +67,7 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         $products = $this->productsRepository->find($id)->delete();
+        return redirect('/');
 
     }
 

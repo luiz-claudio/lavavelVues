@@ -23,7 +23,7 @@ class Products extends Model implements Transformable
      * @var array
      */
     protected $table = 'products';
-    protected $fillable = ['name','description','image','prince','id_category'];
+    protected $fillable = ['name','description','image','price','id_category'];
 
 
     protected $dates = ['deleted_at'];
