@@ -28,4 +28,10 @@ class Products extends Model implements Transformable
 
     protected $dates = ['deleted_at'];
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class,'id_category','id');
+
+    }
+
 }

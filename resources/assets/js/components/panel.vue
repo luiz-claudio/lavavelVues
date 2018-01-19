@@ -1,13 +1,17 @@
 <template>
 
 
-    <div class="panel panel-primary">
-        <div class="panel-heading"><b>{{title}}</b></div>
+    <div class="panel panel-info">
+        <div class="panel-heading"><b>{{title}}</b>
+
 
 
             <slot> </slot>
 
         </div>
+    </div>
+
+
 
 
 

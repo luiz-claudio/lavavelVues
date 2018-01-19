@@ -2,6 +2,9 @@
 
     <div>
         <br>
+        <div class="panel panel-default">
+        <div class="panel-heading"><b></b>
+            <div class="panel-body">
         <div class="row">
          <div class="form-group col-md-3 col-lg-offset-7">
             <input type="search" class="form-control" placeholder="Search" v-model="search" />
@@ -48,6 +51,9 @@
                  </div>
             </div>
         </div>
+        </div>
+    </div>
+    </div>
 
 
 

@@ -2,27 +2,15 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import Vuex from 'vuex';
+Vue.use(Vuex);
 
 
 
 
-//CREATE VUEX
 
-/*
-const store = new Vuex.Store({
-   state:{
-       items:{}
-   },
-    mutations:{
-       setItems(state,obj){
-           state.items = obj;
 
-       }
 
-    }
-
-});
-*/
 
 
 Vue.component('topo',require('./components/topo.vue'));
@@ -34,6 +22,21 @@ Vue.component('table-list',require('./components/tableList.vue'));
 
 const app = new Vue({
     el: '#app',
+    store: new Vuex.Store({
+        state:{
+            itens:{teste:"opa funcionou1"}
+        },
+        mutations:{
+            setItens(state,obj){
+                state.itens = obj;
+            }
+        }
+
+
+
+
+    })
+
 
    });
 

@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 class CategoriesController extends Controller
 {
 
-
     protected $categorieRepository;
 
 
@@ -21,9 +20,9 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        $categories = $this->categorieRepository->all();
+        $categories = $this->categorieRepository->select('id','name')->get();
 
-          return $categories;
+          return view('category.list',compact('categories'));
 
     }
 
@@ -31,40 +30,33 @@ class CategoriesController extends Controller
     {
         $category = $this->categorieRepository->create($request->all());
 
-
+        return redirect('/admin/category/list');
     }
 
     public function show($id)
     {
         $category =$this->categorieRepository->find($id);
-
-        return $category;
-
-    }
-
-    public function edit($id)
-    {
-
-
+        return view('category.edit',compact('category'));
     }
 
     public function update(Request $request,$id)
     {
         $category = $this->categorieRepository->find($id)
             ->update($request->all());
-
+        return redirect('/admin/category/list');
     }
 
     public function destroy($id)
     {
-        $category = $this->categorieRepository->find($id)->delete();
 
+      //  $category = $this->categorieRepository->find($id)->delete();
+       // return redirect('/admin/category/list');
+    }
+    public function newCategory(){
 
-
+        return view('category.register');
 
     }
-
-
 
 
 }

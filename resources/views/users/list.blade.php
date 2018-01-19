@@ -8,11 +8,10 @@
 
                 <panel title ='Products'>
                     <table-list
-                            :title="['#','Image','Category','Title',
-                            'Description','Price']"
+                            :title="['#','name']"
 
-                            :items="{{$products}}"
-                            newitem="/admin/product/register" edit="/admin/product/show/" del="/admin/product/destroy/" order="desc" ordercol="1">
+                            :items="{{$users}}"
+                            newitem="/admin/users/register" order="desc" ordercol="1">
 
                     </table-list>
                 </panel>

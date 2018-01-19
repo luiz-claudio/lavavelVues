@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Manager') }}</title>
 
 
     <!-- Fonts -->
@@ -23,23 +23,31 @@
 </head>
 <body>
     <div id="app">
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-              <topo>
-                <div class="form-inline my-2 my-lg-0">
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ auth()->user()->name }} <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ url('logout') }}">Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
+
+
+
+            @if(Auth::check())
+              <topo
+                 title="Manager" user="{{ auth()->user()->name }} ">
               </topo>
-
-        </br>
-
+            @endif
 
 
-        @yield('content')
+
+
+
+
+            @yield('content')
 
 
     </div>
