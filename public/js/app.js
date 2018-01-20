@@ -44524,11 +44524,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group col-md-2" }, [
-              _vm.newitem
-                ? _c("button", [
-                    _c("a", { attrs: { href: _vm.newitem } }, [_vm._v("New")])
-                  ])
-                : _vm._e()
+              _c("a", { attrs: { href: _vm.newitem } }, [
+                _vm.newitem ? _c("button", [_vm._v("New ")]) : _vm._e()
+              ])
             ])
           ]),
           _vm._v(" "),
@@ -44574,8 +44572,20 @@ var render = function() {
                         return _c(
                           "tr",
                           [
-                            _vm._l(item, function(i) {
-                              return _c("th", [_vm._v(_vm._s(i))])
+                            _vm._l(item, function(i, index, key) {
+                              return _c("th", [
+                                index == "image"
+                                  ? _c("p", [
+                                      _c("img", {
+                                        attrs: {
+                                          src: i,
+                                          width: "60",
+                                          height: "60"
+                                        }
+                                      })
+                                    ])
+                                  : _c("p", [_vm._v(_vm._s(i))])
+                              ])
                             }),
                             _vm._v(" "),
                             _c("th", [

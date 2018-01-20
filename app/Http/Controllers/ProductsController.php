@@ -6,6 +6,7 @@ use App\Entities\Category;
 use App\Http\Requests\productRequest;
 use Illuminate\Http\Request;
 use App\Entities\Products;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProductsController extends Controller
@@ -47,9 +48,21 @@ class ProductsController extends Controller
     public function store(productRequest $request)
     {
         $products = $this->productsRepository->create($request->all());
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $extension = $image->extension();
+            if ($extension == "jpeg" or $extension == "png") {
 
+                storage::put($request->image,'public');
+                $path = $request->image->store('public');
+                $url =  $this->productsRepository->find($products->id);
+                $url->image = Storage::url($path);
+                $url->save();
+
+            }
+
+        }
         return redirect('/');
-
     }
 
     public function show($id)
@@ -67,6 +80,21 @@ class ProductsController extends Controller
         $products = $this->productsRepository->find($id)
             ->update($request->all());
 
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $extension = $image->extension();
+            if ($extension == "jpeg" or $extension == "png") {
+
+                storage::put($request->image,'public');
+                $path = $request->image->store('public');
+                $url =  $this->productsRepository->find($id);
+                $url->image = Storage::url($path);
+                $url->save();
+
+            }
+
+        }
+
         return redirect('/');
 
     }
@@ -77,39 +105,7 @@ class ProductsController extends Controller
         return redirect('/');
 
     }
-    public function importView()
-    {
-        return view('products.import');
 
-    }
-
-    public function import()
-    {
-        // Abre o Arquvio no Modo r (para leitura)
-        $arquivo = fopen ('clientes.csv', 'r');
-
-       // Lê o conteúdo do arquivo
-        while(!feof($arquivo))
-        {
-            // Pega os dados da linha
-            $linha = fgets($arquivo, 1024);
-
-            // Divide as Informações das celular para poder salvar
-            $dados = explode(',', $linha);
-
-            // Verifica se o Dados Não é o cabeçalho ou não esta em branco
-            if($dados[0] != 'CLIENTES' && !empty($linha))
-            {
-                $cliente = new clientes();
-                $cliente->nome = $dados[0];
-                $cliente->telefone = $dados[1];
-                $cliente->save();
-            }
-        }
-
-        fclose($arquivo);
-
-    }
 
 
 }

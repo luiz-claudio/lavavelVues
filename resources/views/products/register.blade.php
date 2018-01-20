@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('head')
+    @endsection
 
 @section('content')
 
@@ -41,13 +43,13 @@
 
                             <div class="form-group">
                                 <label for="image">upload image</label>
-                                <input type="file" class="form-control-file" id="image">
+                                <input type="file" class="form-control-file" id="image" name="image">
                             </div>
                             </panel>
                         <panel title="Price">
                         <div class="form-group">
                             <label for="descricao"></label>
-                            <input type="text" class="form-control" id="price" name="price" placeholder="$ 0.00" value="{{ old('price')}}"   >
+                            <input type="nu" class="form-control" id="price" name="price" onClick="javascript:this.value=''" value="{{ old('price')}}"   >
                         </div>
                         </panel>
 
@@ -61,6 +63,13 @@
             </div>
         </div>
     </div>
+
+
+
+
+    @endsection
+
+@section('js')
 
 
 

@@ -2,16 +2,18 @@
 
 @section('content')
 
+
     <div class="container">
         <div class="row">
             <div class="col-md-11">
 
-                <panel title ='Users'>
+                <panel title ='List import Products'>
                     <table-list
-                            :title="['#','name']"
+                            :title="['#','File','Date','Status']"
 
-                            :items="{{$users}}"
-                            newitem="/admin/users/register" order="desc" ordercol="1">
+                            :items="{{$import}}"
+                            newitem="/admin/product/import" order="desc" ordercol="1">
+
 
                     </table-list>
                 </panel>

@@ -44,9 +44,9 @@
 
                             <div class="form-group">
                                 <label for="image">upload image</label>
-                                <input type="file" class="form-control-file" id="image">
+                                <input type="file" class="form-control-file" id="image" name="image">
                                 <hr>
-                                {{$product->image}}
+                                <img src=" {{$product->image}}" width="100" height="100" />
                             </div>
                             </panel>
                         <panel title="Price">

@@ -12,7 +12,7 @@
 
 
             <div class="form-group col-md-2">
-                <button v-if="newitem" ><a :href="newitem">New</a> </button>
+                <a :href="newitem"> <button v-if="newitem">New </button></a>
             </div>
 
 
@@ -35,7 +35,7 @@
             </thead>
             <tbody>
             <tr v-for="item in list">
-                <th v-for="i in item">{{i}}</th>
+                <th v-for="(i,index,key) in item"><p v-if="index == 'image'"><img :src="i" width="60" height="60" /></p> <p v-else>{{i}}</p></th>
 
                 <th>
                 <a v-if="edit":href="edit+item.id"> Edit |</a>
