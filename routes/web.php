@@ -24,7 +24,6 @@ Route::prefix('admin')->middleware(['checkUser'])->group(function (){
     Route::get('/users/register','Usercontroller@newUsers');
     //import
     Route::get ('product/import','ImportController@import');
-    Route::get ('product/import/start','ImportController@startImport');
     Route::post('product/setimport','ImportController@saveList');
     Route::get('product/import/list','ImportController@index');
 

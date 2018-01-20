@@ -88,11 +88,12 @@
         },
 
         computed:{
+
             list:function() {
 
 
-                let order = this.orderAux || "asc";
-                let orderCol = this.orderColAux || 0;
+                let order = this.orderAux;
+                let orderCol = this.orderColAux;
                 order = order.toLowerCase();
                 orderCol = parseInt(orderCol);
                 if (order == "asc") {

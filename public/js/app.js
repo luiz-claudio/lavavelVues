@@ -44435,11 +44435,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     computed: {
+
         list: function list() {
             var _this = this;
 
-            var order = this.orderAux || "asc";
-            var orderCol = this.orderColAux || 0;
+            var order = this.orderAux;
+            var orderCol = this.orderColAux;
             order = order.toLowerCase();
             orderCol = parseInt(orderCol);
             if (order == "asc") {
