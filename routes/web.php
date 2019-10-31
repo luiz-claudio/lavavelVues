@@ -7,7 +7,6 @@ Route::prefix('admin')->middleware(['checkUser'])->group(function (){
     Route::get('/category/list', 'CategoriesController@index');
     Route::get('/category/destroy/{id}', 'CategoriesController@destroy');
     Route::get('/category/show/{id}', 'CategoriesController@show');
-    //Route::get('/category/delete/{id}', 'CategoriesController@destroy');
     Route::post('/category/update/{id}', 'CategoriesController@update');
     Route::post('/category/store', 'CategoriesController@store');
     Route::get('/category/register', 'CategoriesController@newCategory');
